@@ -17,6 +17,4 @@ tags: markdown
 `[点我就跳转](#hello)`
 
 ---
-举个例子，[点我就跳转](#hello)
-</br></br></br></br></br></br>
-<span class='anchor' href='hello'>大家好！</span>
+这玩意儿只在github的readme上能用，别的不一定。。
