@@ -101,5 +101,8 @@ theme: landscape
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
-deploy:
-  type: ''
+deploy: 
+  type: 'git' 
+  repo: git@github.com:RocStone/rocstone.github.io.git
+  branch: gh-pages
+
