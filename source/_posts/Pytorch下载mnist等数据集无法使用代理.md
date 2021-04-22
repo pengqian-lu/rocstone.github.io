@@ -17,3 +17,5 @@ urllib.request.install_opener(opener)
 ```
 
 我的ssr的http代理端口是12333，注意改成你的对应的端口。
+
+来源：https://github.com/pytorch/vision/issues/1033#issuecomment-503007804
