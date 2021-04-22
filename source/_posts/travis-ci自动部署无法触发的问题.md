@@ -22,6 +22,3 @@ tags: Hexo
       ![picture 1](/images/b0aa3bcbbf199386fb37963c0fb7fd62ca18547472896a4c0737732184b4bbb9.png)  
 
   2. 在大佬博客的第七步中，执行的是“使用 travis ci 进行自动化部署”。在master分支下添加完`.travis.yml`文件后，一定要记得`git add .travis.yml`专门添加此文件。在我的机子上直接`git add *`是会跳过这个文件的。
-
-祝你好运！
-![图 1](/images/7fd8be1f0a7d8c5f0a703318a6b77d5e5219e17e9830f9c6b54d85d9e972e9d5.png)  
