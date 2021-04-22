@@ -19,9 +19,9 @@ tags: Hexo
   
   1. 现在github你如果不修改，在创建repo的时候，主分支的名字是main，跟这个博客中的大量的内容不一样，所以建议还是把主分支改成master吧。具体来说。在创建repo时，如果你下方显示的不是master而是main，那么点击setting设置一下，把默认分支名字改成master，反正我们中国人也没这种政治正确，没必要避讳master。
 
-      ![picture 1](source/images/b0aa3bcbbf199386fb37963c0fb7fd62ca18547472896a4c0737732184b4bbb9.png)  
+      ![picture 1](/images/b0aa3bcbbf199386fb37963c0fb7fd62ca18547472896a4c0737732184b4bbb9.png)  
 
   2. 在大佬博客的第七步中，执行的是“使用 travis ci 进行自动化部署”。在master分支下添加完`.travis.yml`文件后，一定要记得`git add .travis.yml`专门添加此文件。在我的机子上直接`git add *`是会跳过这个文件的。
 
 祝你好运！
-![图 1](../images/7fd8be1f0a7d8c5f0a703318a6b77d5e5219e17e9830f9c6b54d85d9e972e9d5.png)  
+![图 1](/images/7fd8be1f0a7d8c5f0a703318a6b77d5e5219e17e9830f9c6b54d85d9e972e9d5.png)  
