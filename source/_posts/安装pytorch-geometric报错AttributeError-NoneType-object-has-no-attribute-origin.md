@@ -1,7 +1,7 @@
 ---
-title: 安装pytorch_geometric报错AttributeError: NoneType object has no attribute origin
+title: 安装pytorch_geometric报错AttributeError NoneType object has no attribute origin
 date: 2021-04-23 22:08:14
-tags: Pytorch
+tags: pytorch-geometric
 ---
 
 我首先按照[官网](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html)的第一种方式安装pytorch_gemometric.
