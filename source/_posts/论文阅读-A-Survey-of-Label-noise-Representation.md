@@ -83,7 +83,7 @@ mathjax: true
    - [] 这两个是啥？定义
 21. 学习label noise的三个重要元素
     1.  从数据层面，研究transition matrix
-          - class dependent T = $T_{ij}=p(\bar{Y}=e_j|Y=e_i,x_i)$
+          - class dependent  $T =T_{ij}=p(\bar{Y}=e_j|Y=e_i,x_i)$
           - 线性
               - Training convolutional networks with noisy labels，2015
               - 论文提出，其实label noise还有一种outliers，也就是不属于数据集中的任何一类，但是却被错误标记成了其中一类
@@ -99,10 +99,26 @@ mathjax: true
                - 写的并不清楚，也没有用图很好的展示$w_{noise}$是什么，先不管了。
           - backward和forward
                -  Making deep neural networks robust to label noise: A loss correction approach
+               -  backward: $\ell^{\leftarrow}(\hat{p}(\tilde{y}|x))=T^{-1}\ell(\hat{p}(\tilde{y}|x))$
+               -  forward: $\ell^{\rightarrow}(\hat{p}(\tilde{y}|x))=\ell(T^{\top}\sigma(h(x)))$
                -  证明了backward是unbiased estimator，即$\mathbb{E}_{x,\tilde{y}}\ell^{\leftarrow}(y,\hat{p}(y|x))=\mathbb{E}_{x,y}\ell(y,\hat{p}(y|x))$
-               -  但是forward只能证明用它学出来的分类器和在clean data上学出来的最优分类器一样好。为什么forward不是unbaised的呢？我不清楚
+               -  **这种特性也被成为risk consistent**
+               -  但是forward只能证明用它学出来的分类器和在clean data上学出来的最优分类器一样好,这种特性也被称为**classifier consistent**
+          -  gold correction
+                -  除了noisy dataset，还有一个clean subdataset
+                -  用noisy dataset训练出一个分类器先
+                -  然后在clean subdataset上测试这个classifier，用来估计T
+                -  $T_{ij}=1/|A_i|\sum_{x\in A_i}\hat{p}(\tilde{y}=j|x)$
+                -  论文提到，如果数据集是separable（也就是y is deterministic given x），那么学出$p(\tilde{y}|x)$有可能的。
+          -  label smooth
+                -  label smooth 可以看做是正则化
+                -  我发现label smooth其实就是另一种correction，首先来看label smooth的定义$\bar{R}(f)=\frac{1}{N}\sum_{n=1}^{N}\bar{y}_n^T\ell(f(x_n))$，相比之下，原来的empirical risk是$R(f)=\frac{1}{N}\sum_{n=1}^{N}\ell(y_n,f(x_n))$。可以发现就是做了一个类似reweight的东西。而且$\bar{y}_n$是一个向量，长度为L也就是类别数量，$(\bar{y}_n)_i=(1-\alpha)[i=y]+\frac{\alpha}{L}$。
+                -  实验值在symmetric上做，这不是搞笑吗，其实这个label smooth就可以看成是假设T是symmetric了。我只能说这实验很没有说服力，而且也没有比FC更好，这论文有什么意思吗？
+          -  trevision
+                -  论文用reweight的办法来代替求forward中的$T^{-1}$. 但是这个reweight的推导写的是错的，应该是$\sum_x\sum_i P_{\tilde{D}}(X=x,\tilde{Y}=i)\frac{P_{D}(Y=i|X=x)}{P_{\tilde{D}}(\tilde{Y}=i|X=x)}\ell(f(x),i)$。
+                -  [] 下面看到泛化误差的证明了，generalization error. 额细节还是挺麻烦的，先不看了。
     2.  从目标函数层面，设计一个noise-tolerant损失函数，以此训练出一个robust classifier，并且能够证明这个classifier会收敛到能在clean data上学出来的classifier（不太可能把）
-          - 根据理论证明，如果dataset足够大，pypothesis set足够大，那么学到的分类器可以接近clean data上学到贝叶斯最优分类器
+          - 根据理论证明，如果dataset足够大，hypothesis set足够大，那么学到的分类器可以接近clean data上学到贝叶斯最优分类器
           - $\ell + r$ 正则化
           - $\sum_i w_i\ell_i$reweight
           - 全新的loss
