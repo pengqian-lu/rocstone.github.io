@@ -1,8 +1,17 @@
 ---
-title: '论文阅读: Training convolutional networks with noisy'
+title: '论文阅读: Training convolutional networks with noisy labels'
 date: 2021-05-24 14:14:30
 tags: Paper
+mathjax: true
+
 ---
+
+# 作者、级别
+Sainbayar Sukhbaatar
+
+Department of Computer Science, New York University
+
+ICLR 2015
 
 # 用人话概括本论文
 1. 论文提出，既然我们的数据集只有noisy label，那么就直接去学noisy label的后验概率好了。因为我们知道noisy label和clean label的关系是由一个转移矩阵Q确定的，所以只要学好了noisy label，就能把Q学出来，知道了Q和noisy label，也就能学出来我们想要的clean posterior。
@@ -18,6 +27,8 @@ tags: Paper
 6. 算法执行分两步，先把linear layer设置成单位矩阵，让base model学习到noisy posterior，作为一个好的起点，然后再同时学习base model和Q，方便Q收敛到$Q^*$.
 
 7. 在实验中，论文提出了一种非常有意思的adversial label noise。label noise的基本假设就是样本容易翻转到其它相似的class上，如何定义相似呢？论文用一个model学习clean posterior，然后看样本在哪个class上的posterior最大（当然要除了最大的那个），那么就意味着样本有更高的概率翻转到那个类。这个clean posterior做平均值，就可以用来当做Q了。这一点可以利用到我们未来的噪声生成上。
+
+
 
 # 符号
 1.  $y ^*$代表true label 
@@ -54,7 +65,8 @@ $\hat{p}\left(y^{*}=i \mid \mathbf{x}_{n}, \theta\right)$代表真实属于第j�
 
 ## 为什么这样的model可以让C趋近于一个单位矩阵？
 
-同时我们还能定义$\tilde{c}_{ij}:=\frac{1}{\left|S_{j}\right|} \sum_{n \in S_{j}} \hat{p}\left(\tilde{y}=i \mid \mathbf{x}_{n}, \theta\right)$
+同时我们还能定义
+$\tilde{c}_{ij}=\frac{1}{|S_{j}|}\sum_{n\in S_{j}}\hat{p}(\tilde{y}=i | x_{n}, \theta)$
 
 这就所有原本属于j类的data，它们被model预测为i类的概率。
 

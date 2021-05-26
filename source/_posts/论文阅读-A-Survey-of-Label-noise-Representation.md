@@ -35,7 +35,7 @@ mathjax: true
     - 这其实是有问题的，如果学习算法直接就能处理，那又何必提出新的方法呢？
 2. Learning with noisy labels 提出了一个unbiased risk estimator，用于处理2分类情况西的label noise问题。对于随机标签噪声，它给出了risk minimization的gaurantees
     - [] 这个论文要看一下，看看这个所谓的理论保证是什么？
-    - [] unbiased的又是什么？
+    - [x] unbiased的又是什么？
 3. Classification with noisy labels by importance reweighting 提出用anchor points 来估计noise rate，并且用importance reweighting来设计loss function.
     - [] 看看如何以及为什么用ap就能估计noise rate 
     - [] 看看importance reweighting是什么？为什么能有效解决这个问题
@@ -88,11 +88,10 @@ mathjax: true
               - Training convolutional networks with noisy labels，2015
               - 论文提出，其实label noise还有一种outliers，也就是不属于数据集中的任何一类，但是却被错误标记成了其中一类
               -  ![网络结构](/images/8ca5d670c81290d50f7aed5509b64a7a4483451c717ddd6b5570e8d1b433382d.png)  
-              -  这就是非常经典的loss correction的方法，先pretrain，然后学习t
+              -  直接学出T、clean posterior、noisy posterior
               -  推导了一下为什么这样做可以让model学出clean posterior
               -  还解释了为什么直接这样学不行，理由是这样学会有无穷解，无法保证学出来的T可靠
               -  做强假设，T是主对角dominant，推导出$tr(T*)\le tr(T)$,所以可以以此约束要学习的T，即不断让T的trace越来越小，实际上论文直接在T上家weight decay，因为这样同样能起效。
-              -  设计了一个web images，但是感觉不太好，因为imagenet本身就是noisy的，并不能把它当做clean dataset来用
           - 非线性
                - Training deep neural-networks using a noise adaptation layer
                - 一样要加adaption layer，但是不做强假设，用em算法来学。
@@ -104,13 +103,13 @@ mathjax: true
                -  证明了backward是unbiased estimator，即$\mathbb{E}_{x,\tilde{y}}\ell^{\leftarrow}(y,\hat{p}(y|x))=\mathbb{E}_{x,y}\ell(y,\hat{p}(y|x))$
                -  **这种特性也被成为risk consistent**
                -  但是forward只能证明用它学出来的分类器和在clean data上学出来的最优分类器一样好,这种特性也被称为**classifier consistent**
-          -  gold correction
+          -  gold correction: Using trusted data to train deep networks on labels corrupted by severe noise
                 -  除了noisy dataset，还有一个clean subdataset
                 -  用noisy dataset训练出一个分类器先
                 -  然后在clean subdataset上测试这个classifier，用来估计T
                 -  $T_{ij}=1/|A_i|\sum_{x\in A_i}\hat{p}(\tilde{y}=j|x)$
                 -  论文提到，如果数据集是separable（也就是y is deterministic given x），那么学出$p(\tilde{y}|x)$有可能的。
-          -  label smooth
+          -  label smooth: Does label smoothing mitigate label noise
                 -  label smooth 可以看做是正则化
                 -  我发现label smooth其实就是另一种correction，首先来看label smooth的定义$\bar{R}(f)=\frac{1}{N}\sum_{n=1}^{N}\bar{y}_n^T\ell(f(x_n))$，相比之下，原来的empirical risk是$R(f)=\frac{1}{N}\sum_{n=1}^{N}\ell(y_n,f(x_n))$。可以发现就是做了一个类似reweight的东西。而且$\bar{y}_n$是一个向量，长度为L也就是类别数量，$(\bar{y}_n)_i=(1-\alpha)[i=y]+\frac{\alpha}{L}$。
                 -  实验值在symmetric上做，这不是搞笑吗，其实这个label smooth就可以看成是假设T是symmetric了。我只能说这实验很没有说服力，而且也没有比FC更好，这论文有什么意思吗？
