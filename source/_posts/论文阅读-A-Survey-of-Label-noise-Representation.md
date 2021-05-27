@@ -2,7 +2,7 @@
 title: 论文阅读 A Survey of Label-noise Representation
 Learning: Past, Present and Future
 date: 2021-05-04 19:20:41
-tags: Paper, Survey
+tags: Paper, Survey, Label noise
 mathjax: true
 ---
 

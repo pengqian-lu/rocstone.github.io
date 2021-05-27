@@ -1,7 +1,7 @@
 ---
 title: '论文阅读 Making deep neural networks robust to label noise: A loss correction approach'
 date: 2021-05-25 21:34:36
-tags: Paper
+tags: Paper, Label noise
 mathjax: true
 ---
 # 作者
