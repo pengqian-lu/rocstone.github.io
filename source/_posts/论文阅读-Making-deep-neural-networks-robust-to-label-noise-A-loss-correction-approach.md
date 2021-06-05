@@ -31,7 +31,8 @@ CVPR 2017
 一个hypothesis的risk是其在某个数据集上loss的期望。
 
 # 要点
-1. `risk-consistent`就是having same risk，为什么`backward loss correction`是`risk-consistent`呢？因为$E_{x,y}\ell(y,f(x))=E_{x,\tilde{y}}\ell^{\leftarrow}(\tilde{y},f(x))$.
+1. `risk-consistent`就是having same risk，为什么`backward loss correction`是`risk-consistent`呢？因为$E_{x,y}\ell(y,f(x))=E_{x,\tilde{y}}\ell^{\leftarrow}(\tilde{y},f(x))$. 证明解析看下面
+
 
 2. `risk-consistent`必然是`classifier-consistent`，后者的含义是学出来的classifier一致。由`backward loss correction`的`risk-consistent`可以推导出$\argmin_f E_{x,y}\ell(y,f(x))=\argmin_f E_{x,\tilde{y}}\ell^{\leftarrow}(\tilde{y},f(x))$。二者学出来的f一样，所以`backward loss correction`是`classifier-consistent`。
 
@@ -41,4 +42,24 @@ CVPR 2017
 
 4. 论文那还讨论了，backward loss 的 Hessian 与 原始loss的一致，而且都是0，说明他俩的一阶收敛速度一样。当然这东西我就不做深入研究了。
 
-5. 
+
+# 证明
+我曾经被backward的证明卡了非常之久，我曾经以为自己看懂了，但是直到今天我才真正看懂。
+
+下面详细解释
+
+![图 1](https://i.loli.net/2021/06/04/G4xT6rKPIwFEAjD.png)  
+
+首先，定义backward $\ell^{\leftarrow}(\tilde{y},f(x))=T^{-1}\ell(y,f(x))$. 没问题，人家想证明定义就证明定义，但是要注意，$\ell(y,f(x))$在本文中并不是一个值，而是一个向量。其含义为$\ell(y,f(x))=[\ell(1, f(x)),\ell(2, f(x)),...,\ell(c, f(x))]^\top$.
+
+接着，直接看proof。核心难点就是理解：$\mathbb{E}_{\tilde{y}|x}\ell^{\leftarrow}(f(x))$。$\mathbb{E}$的下标永远代表取遍所有值的平均值，$x$取遍所有值就是取遍所有样本$x$。$\tilde{y}$是一个one-hot向量，只有label为1，其余为0，取遍所有值则为取遍这个one-hot向量中的所有值。
+
+所以可以改写为$\mathbb{E}_{\tilde{y}|x}\ell^{\leftarrow}(f(x))=\frac{1}{n}\sum_{i=1}^{n}\sum_{j=1}^{c}\tilde{\mathbf{y}}_{ij}\cdot\ell^{\leftarrow}(f(x))_j=\frac{1}{n}\sum_{i=1}^{n}\tilde{y}_{i}\cdot\ell^{\leftarrow}(f(x))_{y_i}$. 
+
+把这里的$\mathbf{y}_{ij}$理解成一个矩阵，每行只有一个1。
+
+把这里的$y_i$理解成一个数字，代表样本$x_i$对应的标签。
+
+这样就不难理解，$\frac{1}{n}\sum_{i=1}^{n}\sum_{j=1}^{c}\tilde{\mathbf{y}}_{ij}\cdot\ell^{\leftarrow}(f(x))_j=\frac{1}{n}\sum_{i=1}^{n}\mathbf{y}_{i\cdot}\cdot T\cdot\ell^{\leftarrow}(f(x))$，也就对应了上了proof的第一个等号，后面的都easy。
+
+注意transition matrix $T$的结构比较特殊，$T_{ij}$代表的是样本$i$翻转到$j$的概率，而$\mathbf{y}_{i\cdot}$是一个行向量，所以相乘正好等于$\frac{1}{n}\sum_{i=1}^n\tilde{\mathbf{y}}_{i\cdot}$。注意，并不是直接等于$\tilde{\mathbf{y}}_{i\cdot}$而是约等于所有样本的noisy label的平均值，等于noisy label的期望。各种原因真得自己想了。看懂这里，本论文没什么难点了。

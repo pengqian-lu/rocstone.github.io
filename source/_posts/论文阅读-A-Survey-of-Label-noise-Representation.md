@@ -114,7 +114,7 @@ mathjax: true
                 -  我发现label smooth其实就是另一种correction，首先来看label smooth的定义$\bar{R}(f)=\frac{1}{N}\sum_{n=1}^{N}\bar{y}_n^T\ell(f(x_n))$，相比之下，原来的empirical risk是$R(f)=\frac{1}{N}\sum_{n=1}^{N}\ell(y_n,f(x_n))$。可以发现就是做了一个类似reweight的东西。而且$\bar{y}_n$是一个向量，长度为L也就是类别数量，$(\bar{y}_n)_i=(1-\alpha)[i=y]+\frac{\alpha}{L}$。
                 -  实验值在symmetric上做，这不是搞笑吗，其实这个label smooth就可以看成是假设T是symmetric了。我只能说这实验很没有说服力，而且也没有比FC更好，这论文有什么意思吗？
           -  trevision
-                -  论文用reweight的办法来代替求forward中的$T^{-1}$. 但是这个reweight的推导写的是错的，应该是$\sum_x\sum_i P_{\tilde{D}}(X=x,\tilde{Y}=i)\frac{P_{D}(Y=i|X=x)}{P_{\tilde{D}}(\tilde{Y}=i|X=x)}\ell(f(x),i)$。
+                -  论文用reweight的办法来代替求backward中的$T^{-1}$. 但是这个reweight的推导写的是错的，应该是$\sum_x\sum_i P_{\tilde{D}}(X=x,\tilde{Y}=i)\frac{P_{D}(Y=i|X=x)}{P_{\tilde{D}}(\tilde{Y}=i|X=x)}\ell(f(x),i)$。
                 -  [] 下面看到泛化误差的证明了，generalization error. 额细节还是挺麻烦的，先不看了。
     2.  从目标函数层面，设计一个noise-tolerant损失函数，以此训练出一个robust classifier，并且能够证明这个classifier会收敛到能在clean data上学出来的classifier（不太可能把）
           - 根据理论证明，如果dataset足够大，hypothesis set足够大，那么学到的分类器可以接近clean data上学到贝叶斯最优分类器
