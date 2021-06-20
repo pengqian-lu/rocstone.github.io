@@ -40,14 +40,14 @@ mathjax: true
     - [] 看看如何以及为什么用ap就能估计noise rate 
     - [] 看看importance reweighting是什么？为什么能有效解决这个问题
 4. Training convolutional networks with noisy labels 提出在softmax layer上面设计一个linear noise adaption layer
-   - [] 看一下为什么这样做有效？
+   - [x] 看一下为什么这样做有效？理论证明如果学到$T$是$T^*$，那么必定能学到clean posterior. 作者发现T的迹一定大于等于$T^*$的迹，所以可以以最小化T的迹为目标，来学习一个可靠的T。
 5. Auxiliary image regularization for deep cnns with noisy labels提出可以用辅助的正则化策略来选择可靠的label，这个正则化策略利用了mutual context information。
    - [] 为什么这样子可以选出可靠的label
    - [] mutual context information是什么？它是怎么做为正则化项的？
 6. Training deep neural-networks using a noise adaptation layer 提出可以用一个 onliner noise adaption layer
-   - [] 同样的问题，解决了什么问题，如何解决的
+   - [x] 同样的问题，解决了什么问题，如何解决的？写的不好，懒得仔细看
 7. Making deep neural networks robust to label noise: A loss correction approach经典必看
-   - [] 为什么有效？
+   - [x] 为什么有效？理论证明了是risk-consistent的
 8. Co-teaching: Robust training of deep neural networks with extremely noisy labels
    - [] accumulated error是什么？
    - [] 为何有效
