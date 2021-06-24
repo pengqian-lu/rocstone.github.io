@@ -1,7 +1,7 @@
 ---
 marp: true
 theme: gaia
-footer: 'Pengqian Lu, 2021.06.08'
+footer: 'Pengqian Lu, 2021.06.22'
 paginate: true
 style: |
   section a {
@@ -33,7 +33,7 @@ Semi-supervised object classification in relational data.
 ---
 ## Brief introduction of CRF
 
-<!-- ![图 3](https://i.loli.net/2021/06/07/VyPvXTWOfes32Kx.png)   -->
+![图 3](https://i.loli.net/2021/06/07/VyPvXTWOfes32Kx.png)  
 
 Given a graph $G=(V,E,X,Y)$, let $V$ denotes a set of nodes, $E$ denotes a set of edges, $X$ denotes the feature matrix on nodes and $Y$ denotes the labels of nodes.
 
@@ -41,13 +41,31 @@ Given a graph $G=(V,E,X,Y)$, let $V$ denotes a set of nodes, $E$ denotes a set o
 ## Brief introduction of CRF
 CRF models the conditional probability of $Y$ given $X$ as:
 
-$p(Y|X)=\frac{1}{Z(X)}\prod_{(n_i,n_j)\in E}-\exp\{\psi_{ij}(y_i,y_j,X)\}$
+$p(Y|X)=\frac{1}{Z(X)}\prod_{(n_i,n_j)\in E}\exp\{-\psi_{ij}(y_i,y_j,X)\}$
 
-Here, $Z=\sum_Y\prod_{(n_i,n_j)\in E}-\exp\{\psi_{ij}(y_i,y_j,X)\}$
+Here, $Z=\sum_Y\prod_{(n_i,n_j)\in E}\exp\{-\psi_{ij}(y_i,y_j,X)\}$
 
 Potential functions $\psi_{i,j}$, e.g.,
 
  $\psi_{ij}=A_i(y_i,X)+I_{ij}(y_i,y_j,X)=\alpha |x_i-y_i| + \beta |y_i - y_j|$
+
+<!-- Scoped style -->
+<style scoped>
+p {
+  font-size: 28px;
+}
+</style>
+
+
+ ---
+## Brief introduction of CRF
+
+![图 2](https://i.loli.net/2021/06/22/NhfiFGgd4baAxce.png)  
+
+
+ $\psi_{ij}=A_i(y_i,X)+I_{ij}(y_i,y_j,X)=\alpha |x_i-y_i| + \beta |y_i - y_j|$
+
+$\psi_{ij}= \mathrm{unary \ term + pairwise \ term}$
 
 We want to learn $p_\phi(Y|X)$ where $\phi$ is all of the parameters of potential functions such as $\alpha$ and $\beta$.
 
@@ -57,7 +75,6 @@ p {
   font-size: 28px;
 }
 </style>
-
 
 ---
 ## Brief introduction of CRF
@@ -69,7 +86,7 @@ The limitations of SRL methods:
 ---
 
 ## Brief introduction of GNN
-<!-- ![图 4](https://i.loli.net/2021/06/07/lIgqVrtESc9sAGy.png)   -->
+![图 4](https://i.loli.net/2021/06/07/lIgqVrtESc9sAGy.png)  
 
 Learning object representations with non-linear neural architectures.
 
@@ -87,13 +104,20 @@ Combine the advantages of both the CRF and GNN: learning objective representatio
 
 # Brief introduction of GMNN
 
-1. GMNN models the joint distribution of object labels conditioned on object attributes, i.e. $p(Y|X)$, by using CRF.
+1. GMNN models the joint distribution of object labels conditioned on object attributes, i.e. $p_\phi(Y|X)$, by using CRF.
 
 2. Optimize it with a pseudolikelihood variational EM framework. 
    
-    - In the E-step, a GNN is used to learn object representations for label prediction. [as GCN]
-    - In the M-step, another graph neural network is employed to model the local dependency of object labels. [as CRF]
+    - In the E-step, a GNN is used to learn object representations for label prediction. `using GNN as unary term`
+    - In the M-step, another graph neural network is used to model the local dependency of labels. `using gnn as pairwise term`
      
+<!-- Scoped style -->
+<style scoped>
+p {
+  font-size: 28px;
+}
+</style>
+ 
 ---
 # Pseudolikelihood Variational EM
 1. We want to learn $p_\phi(Y|X)$. Assuming the potential functions of it is known, we only have to learn parameter $\phi$.
