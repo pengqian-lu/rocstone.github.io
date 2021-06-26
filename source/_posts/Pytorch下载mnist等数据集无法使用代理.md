@@ -2,6 +2,7 @@
 title: Pytorch下载mnist等数据集无法使用代理
 date: 2021-04-22 16:28:45
 tags: Pytorch
+img: /images/gear.jpg
 ---
 明明有ssr代理，下载数据却还是很慢，原因出在下载代码并没有启用ssr
 

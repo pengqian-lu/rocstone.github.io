@@ -2,6 +2,7 @@
 title: github readme中的markdown用锚点进行页面内跳转
 date: 2021-04-16 20:24:51
 tags: markdown
+img: /images/gear.jpg
 ---
 
 两步搞定

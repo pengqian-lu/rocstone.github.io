@@ -2,6 +2,7 @@
 title: '论文阅读：Mixmatch: A holistic approach to semi-supervised learning'
 date: 2021-06-19 16:29:57
 tags: Paper, Label Noise
+img: /images/blackboard.jpg
 ---
 
 要点：

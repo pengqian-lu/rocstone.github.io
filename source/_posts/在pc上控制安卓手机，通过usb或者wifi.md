@@ -2,6 +2,7 @@
 title: 在pc上控制安卓手机，通过usb或者wifi
 date: 2021-06-03 23:19:42
 tags: 软件
+img: /images/gear.jpg
 ---
 非常简单，[直接看这里](https://github.com/Genymobile/scrcpy)
 

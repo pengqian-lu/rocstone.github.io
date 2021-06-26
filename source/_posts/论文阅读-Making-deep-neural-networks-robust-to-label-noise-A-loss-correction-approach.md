@@ -3,6 +3,7 @@ title: '论文阅读 Making deep neural networks robust to label noise: A loss c
 date: 2021-05-25 21:34:36
 tags: Paper, Label noise
 mathjax: true
+img: /images/blackboard.jpg
 ---
 # 作者
 Giorgio Patrini1,2, Alessandro Rozza3, Aditya Krishna Menon2,1, Richard Nock2,1,4, Lizhen Qu2,1

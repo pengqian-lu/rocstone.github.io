@@ -4,6 +4,7 @@ title: >-
   SOCKS support.
 date: 2021-04-23 20:48:56
 tags: Linux
+img: /images/gear.jpg
 ---
 这个问题出现在
 1. 你在terminal中使用了代理，而其实socks协议的。

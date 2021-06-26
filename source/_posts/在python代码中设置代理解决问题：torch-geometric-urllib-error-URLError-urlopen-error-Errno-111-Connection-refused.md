@@ -3,6 +3,7 @@ title: >-
   在python代码中设置代理解决问题：pytorch-geometric urllib-error-URLError-urlopen-error-Errno-111-Connection-refused>
 date: 2021-04-24 15:10:31
 tags: pytorch-geometric
+img: /images/gear.jpg
 ---
 安装好pytorch-geometric后直接运行，遇到错误` urllib-error-URLError-urlopen-error-Errno-111-Connection-refused`.
 

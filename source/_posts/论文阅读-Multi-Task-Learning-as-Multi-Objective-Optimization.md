@@ -2,6 +2,7 @@
 title: 【不完整】论文阅读 Multi-Task Learning as Multi-Objective Optimization
 date: 2021-05-04 15:39:40
 tags: Paper 
+img: /images/blackboard.jpg
 ---
 
 # Multi-Task Learning as Multi-Objective Optimization

@@ -2,6 +2,7 @@
 title: 双硬盘双系统：linux先win后
 date: 2021-04-18 21:45:00
 tags: Linux
+img: /images/gear.jpg
 ---
 
 装一个linux系统网上的教程非常多，我就不赘述了。难点出在装完linux后如何在另一个硬盘上装win10。即我们想要做到主机上有2块硬盘，硬盘A已经装好linux了，现在想在硬盘B上装Win10。 

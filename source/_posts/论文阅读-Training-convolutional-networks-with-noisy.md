@@ -3,7 +3,7 @@ title: '论文阅读: Training convolutional networks with noisy labels'
 date: 2021-05-24 14:14:30
 tags: Paper, Label noise
 mathjax: true
-
+img: /images/blackboard.jpg
 ---
 
 # 作者、级别

@@ -2,6 +2,7 @@
 title: kde 特效失败无法显示桌面网格的问题
 date: 2021-05-11 22:28:09
 tags: Linux, KDE
+img: /images/gear.jpg
 ---
 莫名其妙ctrl+tab没特效了，win+tab也没特效，在快捷键设置里面明明设置了win+tab给显示桌面网格
 ![图 2](/images/787ccc39e65a1f9df2f5ab4c22b56224eac76585a2f70c9921881233c42fbc27.png)  

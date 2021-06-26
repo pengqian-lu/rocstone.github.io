@@ -4,6 +4,7 @@ Learning: Past, Present and Future
 date: 2021-05-04 19:20:41
 tags: Paper, Survey, Label noise
 mathjax: true
+img: /images/blackboard.jpg
 ---
 
 ## Introduction

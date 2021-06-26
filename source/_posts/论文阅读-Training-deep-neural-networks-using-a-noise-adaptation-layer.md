@@ -3,6 +3,7 @@ title: 论文阅读 Training deep neural-networks using a noise adaptation layer
 date: 2021-05-25 19:15:00
 tags: Paper, Label noise
 mathjax: true
+img: /images/blackboard.jpg
 ---
 # 作者、级别
 Jacob Goldberger & Ehud Ben-Reuven

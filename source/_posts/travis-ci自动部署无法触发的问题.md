@@ -2,6 +2,7 @@
 title: hexo建立博客要注意travis ci自动部署无法触发的问题
 date: 2021-04-16 17:56:47
 tags: Hexo
+img: /images/gear.jpg
 ---
 [根据这篇非常好的博客](https://mfrank2016.github.io/breeze-blog/2020/05/02/hexo/hexo-start/#toc-heading-3)，我成功部署了hexo。基本上直接照做就行，但是会出现问题（必然的），所以在这里先打个预防针
 

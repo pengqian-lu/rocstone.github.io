@@ -2,6 +2,7 @@
 title: linux 使用技巧
 date: 2021-6-13 13:51:56
 tags: Linux
+img: /images/gear.jpg
 ---
 # 查看显卡使用情况
 查看一次： nvidia-smi

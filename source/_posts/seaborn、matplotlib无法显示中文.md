@@ -2,6 +2,7 @@
 title: seaborn、matplotlib无法显示中文
 date: 2021-05-22 19:58:22
 tags: 可视化, matplotlib, seaborn
+img: /images/gear.jpg
 ---
 
 Linux 下解决方案参考[此处](https://www.shangmayuan.com/a/e32340a6b72f479a838fdba1.html)。
