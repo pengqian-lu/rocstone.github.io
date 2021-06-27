@@ -3,6 +3,8 @@ title: 论文阅读：Data Augmentation for Graph Neural Networks
 date: 2021-06-25 14:59:32
 tags: Paper, GNN
 img: /images/blackboard.jpg
+mathjax: true
+
 ---
 
 ### Motivation：

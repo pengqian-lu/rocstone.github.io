@@ -3,6 +3,8 @@ title: 论文阅读-Are Anchor Points Really Indispensable in Label-Noise Learni
 date: 2021-06-05 20:33:08
 tags: Paper, Label noise
 img: /images/blackboard.jpg
+mathjax: true
+
 ---
 本文写作非常清楚
 1. transition matrix很重要，可以用来设计risk-consistent和classifier-consistent的分类器
