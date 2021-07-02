@@ -1,7 +1,7 @@
 ---
 title: AI书籍：神经网络与深度学习
 date: 2021-06-27 15:02:02
-tags: Book
+tags: Book, DL
 img: /images/nndl.png
 mathjax: true
 ---

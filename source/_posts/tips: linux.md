@@ -74,3 +74,16 @@ linux默认的ssh还是太弱了，复制文件等操作非常不方便，vscode
 我把每个程序的pid都print了出来，保存在out文件里，假如我想杀掉某个文件对应的程序，只需要执行`awk 'FNR == 30' *.out`，就可以获得这批out文件的第30行内容。在我的case里，第30行的内容就是pid.
 
 ![图 1](https://i.loli.net/2021/06/20/edTm6kAhVNSGxXp.png)  
+
+
+## 方便的查看git代码
+
+如果想用linux打开一个github仓库，直接修改域名即可，比如要查看https://github.com/DeepGraphLearning/GMNN 的代码，直接输入https://github1s.com/DeepGraphLearning/GMNN 即可。打开结果如下图。
+![图 4](https://i.loli.net/2021/06/08/CimpR2Gs79Z3Uxz.png)  
+
+
+## linux gif 截图
+搜索peek即可。
+
+## vscode markdown ppt
+vscode markdown 格式编写ppt：搜索vscode插件 Marp for vscode. 当然少不了要了解下他的语法。

@@ -1,0 +1,9 @@
+{
+    "[markdown]": {
+        "editor.quickSuggestions": true
+        // If you turn this on and DO NOT want suggestions
+        // for non-wiki-link, non-tag words,
+        // You may also want to add this setting:
+        // "editor.wordBasedSuggestions": false,
+     }
+}     
