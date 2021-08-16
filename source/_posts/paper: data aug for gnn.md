@@ -1,11 +1,12 @@
 ---
-title: 论文阅读：Data Augmentation for Graph Neural Networks
+title: 论文阅读：data augmentation for GNN
 date: 2021-06-25 14:59:32
 tags: Paper, GNN
 img: /images/blackboard.jpg
 mathjax: true
 
 ---
+## Data Augmentation for Graph Neural Networks
 
 ### Motivation：
 有些边应该有的却没有，比如该cite的paper没cite。有些不该有的边却有，比如发垃圾邮件的人被当做是朋友。
@@ -52,3 +53,15 @@ representation learning on large graphs`做到mini-batch训练。
     - label 与旁边的不同，肯定是一点，但其实semi的时候，很可能旁边都没有其他节点。但是如果做label propagation，一会也肯定有了
 
 
+## Graph Random Neural Networks forSemi-Supervised Learning on Graphs
+
+思想很简单，drop掉部分node的feature，drop的方法可以是partially drop 或者totally drop
+
+
+## Graph Contrastive Learning with Adaptive Augmentation
+On the node attribute level, we corrupt nodefeatures by adding more noise to unimportant node features, to en-force the model to recognize underlying semantic information
+
+在feature上加随机噪声，这也不算是好的aug方法。
+
+## Learning to Purify Noisy Labels via Meta Soft Label Corrector
+需要clean data
